@@ -17,10 +17,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--WelcomeVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="app_swoosh" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="WelcomeVC" customModule="app_swoosh" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,6 +56,9 @@
                                 <state key="normal" title="GET STARTED">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="AHD-AG-ZLM" kind="show" id="Ebz-zl-iCH"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find a team in your city and dominate the league" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zT-sZ-zHI">
                                 <rect key="frame" x="57.5" y="267" width="260" height="44"/>
@@ -86,19 +89,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <connections>
-                        <outlet property="bgImg" destination="V41-nq-Fde" id="Lge-p3-DAY"/>
-                        <outlet property="swoosh" destination="wKb-Qe-iis" id="gVe-4a-dD0"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="31.934032983508249"/>
         </scene>
-        <!--View Controller-->
+        <!--LeagueVC-->
         <scene sceneID="TpM-tW-U34">
             <objects>
-                <viewController id="AHD-AG-ZLM" sceneMemberID="viewController">
+                <viewController id="AHD-AG-ZLM" customClass="LeagueVC" customModule="app_swoosh" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XFW-Pf-rtl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -119,6 +118,9 @@
                                         <state key="normal" title="Mens">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onMensTapped:" destination="AHD-AG-ZLM" eventType="touchUpInside" id="sro-yM-WDy"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wlu-d2-Y5W" customClass="BorderButton" customModule="app_swoosh" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="70" width="335" height="50"/>
@@ -130,6 +132,9 @@
                                         <state key="normal" title="Womens">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onWomensTapped:" destination="AHD-AG-ZLM" eventType="touchUpInside" id="TPe-ff-C2D"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ku-a6-QWl" customClass="BorderButton" customModule="app_swoosh" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="140" width="335" height="50"/>
@@ -141,6 +146,9 @@
                                         <state key="normal" title="Co-ed">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onCoedTapped:" destination="AHD-AG-ZLM" eventType="touchUpInside" id="njW-4J-QNq"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -162,7 +170,7 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h23-NF-Es2" customClass="BorderButton" customModule="app_swoosh" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h23-NF-Es2" customClass="BorderButton" customModule="app_swoosh" customModuleProvider="target">
                                 <rect key="frame" x="16" y="597" width="359" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -173,11 +181,27 @@
                                 <state key="normal" title="NEXT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="onNextTapped:" destination="AHD-AG-ZLM" eventType="touchUpInside" id="d0G-MF-nb9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QId-0t-EHr">
+                                <rect key="frame" x="16" y="30" width="44" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="Ij4-jG-ud3"/>
+                                    <constraint firstAttribute="height" constant="33" id="c03-eB-xx5"/>
+                                </constraints>
+                                <state key="normal" image="backButton"/>
+                                <connections>
+                                    <segue destination="CaZ-tO-N8K" kind="unwind" unwindAction="unwindFromSkillVCWithUnwindSegue:" id="DNU-m9-1ay"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="kZp-1F-6gM" firstAttribute="top" secondItem="cO8-bV-cde" secondAttribute="top" constant="20" id="2Wg-ng-omj"/>
+                            <constraint firstItem="QId-0t-EHr" firstAttribute="leading" secondItem="cO8-bV-cde" secondAttribute="leading" constant="16" id="9Z8-Lt-CXN"/>
+                            <constraint firstItem="QId-0t-EHr" firstAttribute="top" secondItem="cO8-bV-cde" secondAttribute="top" constant="10" id="G5E-Ir-adJ"/>
                             <constraint firstAttribute="bottomMargin" secondItem="h23-NF-Es2" secondAttribute="bottom" constant="20" id="LX1-A1-MBK"/>
                             <constraint firstItem="Wpo-4I-Z0R" firstAttribute="top" secondItem="kZp-1F-6gM" secondAttribute="bottom" constant="50" id="X8p-gW-iRT"/>
                             <constraint firstItem="dpO-Ce-FDO" firstAttribute="bottom" secondItem="cO8-bV-cde" secondAttribute="bottom" id="XJx-TV-KYm"/>
@@ -193,15 +217,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cO8-bV-cde"/>
                     </view>
+                    <connections>
+                        <outlet property="nextBtn" destination="h23-NF-Es2" id="xTu-no-rb7"/>
+                        <segue destination="POE-MW-PAU" kind="show" identifier="skillVCSegue" id="vHP-2X-lFP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gce-2n-Y8U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="CaZ-tO-N8K" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="885.60000000000002" y="31.934032983508249"/>
         </scene>
-        <!--View Controller-->
+        <!--SkillVC-->
         <scene sceneID="yZ7-fo-dqP">
             <objects>
-                <viewController id="POE-MW-PAU" sceneMemberID="viewController">
+                <viewController id="POE-MW-PAU" customClass="SkillVC" customModule="app_swoosh" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fga-QK-ibS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -292,6 +321,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="backButton" width="29" height="24"/>
         <image name="beginnerBallerBG" width="414" height="736"/>
         <image name="desiredLeagueBG" width="414" height="736"/>
         <image name="swooshLogo" width="119" height="20"/>
